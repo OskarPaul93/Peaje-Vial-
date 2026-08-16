@@ -73,6 +73,58 @@ public class EstacionPeaje {
 		}
 	}
 	
+	public void cobrarPeaje(Vehiculo vehiculo) {
+
+		double tarifa;
+
+		if (vehiculo.getTipo().equals("L")) {
+			tarifa = tarifaLiviano;
+		} else {
+			tarifa = tarifaPesado;
+		}
+
+		double saldo = vehiculo.getTag().getSaldo();
+
+		if (saldo >= tarifa) {
+
+			vehiculo.getTag().setSaldo(saldo - tarifa);
+
+			System.out.println("Peaje cobrado correctamente");
+
+		} else {
+
+			System.out.println("Saldo insuficiente");
+
+		}
+	}
+	
+	
+	public void transferirSaldoTag(TagElectronico origen, TagElectronico destino, double monto) {
+
+		ValidadorUtil validador = new ValidadorUtil();
+
+		if (validador.esMontoValido(monto)) {
+
+			double saldoOrigen = origen.getSaldo();
+
+			if (saldoOrigen >= monto) {
+
+				origen.setSaldo(saldoOrigen - monto);
+				destino.setSaldo(destino.getSaldo() + monto);
+
+				System.out.println("Transferencia realizada correctamente");
+
+			} else {
+				System.out.println("Saldo insuficiente");
+			}
+
+		} else {
+			System.out.println("Monto no valido");
+		}
+	}
+	
+	
+	
 	
 	
 
