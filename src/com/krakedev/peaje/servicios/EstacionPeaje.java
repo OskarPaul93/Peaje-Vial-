@@ -59,5 +59,21 @@ public class EstacionPeaje {
 		}
 	}
 	
+	
+	public void recargarTag(TagElectronico tag, double monto) {
+
+		ValidadorUtil validador = new ValidadorUtil();
+
+		if (validador.esMontoValido(monto)) {
+
+			tag.setSaldo(tag.getSaldo() + monto);
+
+		} else {
+			System.out.println("Monto no valido");
+		}
+	}
+	
+	
+	
 
 }

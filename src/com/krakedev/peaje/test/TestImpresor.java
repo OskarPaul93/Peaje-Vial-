@@ -23,8 +23,9 @@ public class TestImpresor {
 				conductor
 		);
 
-		ImpresorUtil impresor = new ImpresorUtil();
+		estacion.recargarTag(vehiculo.getTag(), 10.00);
 
+		ImpresorUtil impresor = new ImpresorUtil();
 		impresor.imprimirVehiculo(vehiculo);
 	}
 }
